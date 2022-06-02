@@ -16,6 +16,8 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+        with:
+          submodules: true
       -
         name: Docker meta
         id: meta
@@ -47,3 +49,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            BUILDKIT_CONTEXT_KEEP_GIT_DIR=true
