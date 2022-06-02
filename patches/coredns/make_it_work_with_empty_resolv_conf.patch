@@ -1,0 +1,13 @@
+Index: coredns/sm/coredns/plugin/forward/setup.go
+===================================================================
+--- coredns.orig/sm/coredns/plugin/forward/setup.go
++++ coredns/sm/coredns/plugin/forward/setup.go
+@@ -110,7 +110,7 @@ func parseStanza(c *caddy.Controller) (*
+ 
+ 	toHosts, err := parse.HostPortOrFile(to...)
+ 	if err != nil {
+-		return f, err
++		log.Warningf("HostPortOrFile() failed: %v\n", err)
+ 	}
+ 
+ 	transports := make([]string, len(toHosts))
